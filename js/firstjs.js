@@ -13,9 +13,6 @@ var computerResultElem = document.getElementById('js-computerResult');
 var winnerOrlosser = document.getElementById('js-winner');
 console.log(winnerOrlosser);
 
-//newGameBtn.addEventlistener('click', game);
-
-
 var pickRock = document.getElementById('js-playerPick_rock');
 var pickPaper = document.getElementById('js-playerPick_paper');
 var pickScissors = document.getElementById('js-playerPick_scissors');
@@ -71,14 +68,6 @@ function getComputerPick () {
 	var possiblePicks = ['rock','paper', 'scissors'];
 	return possiblePicks[Math.floor(Math.random()*3)];
 }
-
-
-/*function playerPick(playerPick) {
-	var computerPick = getComputerPick();
-
-	playerPickElem.innerHTML = playerPick;
-	computerPickElem.innerHTML = computerPick;
-}*/
 
 function checkRoundWinner(playerPick, computerPick) {
 	playerResultElem.innerHTML = computerResultElem.innerHTML = '';
