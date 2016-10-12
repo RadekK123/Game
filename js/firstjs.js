@@ -1,4 +1,3 @@
-
 var newGameBtn = document.getElementById('js-newGameButton');
 var newGameElem = document.getElementById('NewGameElement');
 var pickElem = document.getElementById('js-playerPickElement');
@@ -11,15 +10,10 @@ var computerPickElem = document.getElementById('js-computerPick');
 var playerResultElem = document.getElementById('js-playerResult');
 var computerResultElem = document.getElementById('js-computerResult');
 var winnerOrlosser = document.getElementById('js-winner');
-console.log(winnerOrlosser);
-
-//newGameBtn.addEventlistener('click', game);
-
 
 var pickRock = document.getElementById('js-playerPick_rock');
 var pickPaper = document.getElementById('js-playerPick_paper');
 var pickScissors = document.getElementById('js-playerPick_scissors');
-
 
 pickRock.addEventListener('click', function() { playerPick('rock')});
 pickPaper.addEventListener('click', function() { playerPick('paper')});
@@ -72,14 +66,6 @@ function getComputerPick () {
 	return possiblePicks[Math.floor(Math.random()*3)];
 }
 
-
-/*function playerPick(playerPick) {
-	var computerPick = getComputerPick();
-
-	playerPickElem.innerHTML = playerPick;
-	computerPickElem.innerHTML = computerPick;
-}*/
-
 function checkRoundWinner(playerPick, computerPick) {
 	playerResultElem.innerHTML = computerResultElem.innerHTML = '';
 
@@ -106,24 +92,22 @@ function checkRoundWinner(playerPick, computerPick) {
 		
 		gameState = 'ended';
 		setGameElements();
-		
-		var h1 = document.createElement('h1');
-		var text = document.createTextNode('Victoriaaaaaa :-)');
-		h1.appendChild(text);
-		winnerOrlosser.appendChild(h1);
+
+		setwinner ('Victoriaaaa ! :-)');
 
 	} else if (computer.score == 10) {
 		
 		gameState = 'ended';
 		setGameElements();
-
-		var h1two = document.createElement('h1');
-		var text2 = document.createTextNode('Looser :-p');
-		h1two.appendChild(text2);
-		winnerOrlosser.appendChild(h1two);
-	} else {
-		
+		setwinner ('Looser :-(');
 	}
+}
+
+function setwinner (param) {
+	var h1 = document.createElement('h1');
+	var text = document.createTextNode(param);
+	h1.appendChild(text);
+	winnerOrlosser.appendChild(h1);
 }
 
 function playerPick(playerPick) {
@@ -132,12 +116,9 @@ function playerPick(playerPick) {
 	computerPickElem.innerHTML = computerPick;
 	checkRoundWinner(playerPick, computerPick);
 }
+
 newGameBtn.addEventListener('click', function() {
-	console.log('click');
 	newGame();
+	winnerOrlosser.removeChild(winnerOrlosser.querySelector('h1'));
 });
-
-
-
-
 
